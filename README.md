@@ -3,6 +3,8 @@
 
 **RealSenseのRGB-Dカメラを使用して，「.pcd」形式で点群データを保存・表示が可能**
 
+* The "staircase_data" point cloud takes up a huge amount of space (7.6 GB), so it is recommended to partially pull the data.
+
 ## Contents
 
 ### [staircase_data:](https://github.com/Timur-TUT/RealSnense_pcd/tree/master/staircase_data)
