@@ -7,5 +7,5 @@ def visualize_pcd(path):
     visualization.draw_geometries([pcd], left=0, top=35, window_name=path)
 
 if __name__ == "__main__":
-    visualize_pcd(sys.argv[1])
+    visualize_pcd('./staircase_data/' + sys.argv[1])
     

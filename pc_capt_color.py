@@ -13,6 +13,7 @@ def parse_arguments():
     return parser.parse_args()
 
 class Filters:
+    ### Change each filter option for your own use
     def __init__(self):
         #Decimation
         self.decimation = rs.decimation_filter()
@@ -55,14 +56,14 @@ if __name__=="__main__":
 
     # 0: Custom　　1: Default　　2: Hand　　3: High Accuracy　　4: High Density
     depth_sensor = device.first_depth_sensor()
-    depth_sensor.set_option(rs.option.visual_preset, 3)
+    depth_sensor.set_option(rs.option.visual_preset, 4)
     
+    ### The current value of each option and the possible ranges can be obtained and changed:
     # laser_pwr = depth_sensor.get_option(rs.option.laser_power)
-    # laser_range = depth_sensor.get_option_range(rs.option.laser_power)  # 0.0 ~ 360.0
-    
+    # laser_range = depth_sensor.get_option_range(rs.option.laser_power)
     depth_sensor.set_option(rs.option.laser_power, 360)
-    # print(f"max distance: {depth_sensor.get_option(rs.option.max_distance)}")
 
+    ### Advanced mode can be turned on for more detailed parameter settings
     # advnc_mode = rs.rs400_advanced_mode(profile.get_device())
     # advnc_mode.toggle_advanced_mode(True)
     
@@ -93,7 +94,7 @@ if __name__=="__main__":
     pipeline.stop()
 
     if args.filter:
-        # filterをかける
+        #Post-processing filters are applied if the option is used
         print("Applying filters")
         for x in range(len(frames)):
             frame = frames[x]
@@ -103,7 +104,8 @@ if __name__=="__main__":
             frame = fl.spatial.process(frame)
             frame = fl.temporal.process(frame)
             frame = fl.disparity_to_depth.process(frame)
-            frame = fl.hole_filling.process(frame).as_frameset()            
+            frame = fl.hole_filling.process(frame)
+            frame = frame.as_frameset()
 
         aligned_frame = align.process(frame)
         depth = geometry.Image(np.asanyarray(aligned_frame.get_depth_frame().get_data()))
@@ -117,6 +119,6 @@ if __name__=="__main__":
     pcd = geometry.PointCloud.create_from_rgbd_image(rgbd, pinhole_camera_intrinsic)
     print("Done")
 
-    io.write_point_cloud('./experiment_out/up/' + args.filename, pcd, write_ascii=True)
-    visualize_pcd('./experiment_out/up/' + args.filename)
+    io.write_point_cloud('./staircase_data/' + args.filename, pcd, write_ascii=True)
+    visualize_pcd('./staircase_data/' + args.filename)
     
