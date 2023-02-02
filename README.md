@@ -13,7 +13,7 @@ Point cloud data obtained indoors and outdoors
 
 Program to save point clouds in ".pcd" format with RealSense RGB-D camera connected
 
-```python pc_capt_color.py *path_in_staircase_data*/*file_name*.pcd```
+```python pc_capt_color.py *path_to_folder_in_staircase_data*/*file_name*.pcd```
 
 To apply RealSense post-processing filters, run with the "--filter" option
 
@@ -21,13 +21,13 @@ To apply RealSense post-processing filters, run with the "--filter" option
 
 Program to display point clouds in ".pcd" format
 
-```python pc_disp_color.py *path_in_staircase_data*/*file_name*.pcd```
+```python pc_disp_color.py *path_to_folder_in_staircase_data*/*file_name*.pcd```
 
 ### [ply2pcd.py](https://github.com/Timur-TUT/RealSnense_pcd/blob/master/ply2pcd.py)
 
-A program to convert point clouds in ".ply" format to ".pcd" format, which can be acquired by RealSense Viewer
+Program to convert all point clouds in ".ply" format in the folder to ".pcd" format
 
-```python ply2pcd.py *path_in_staircase_data*/*file_name*.ply```
+```python ply2pcd.py *path_to_folder_in_staircase_data*```
 
 ### [階段認識実験.xlsx](https://github.com/Timur-TUT/RealSnense_pcd/blob/master/%E9%9A%8E%E6%AE%B5%E8%AA%8D%E8%AD%98%E5%AE%9F%E9%A8%93.xlsx)
 
